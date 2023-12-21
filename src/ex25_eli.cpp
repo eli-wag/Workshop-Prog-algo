@@ -6,7 +6,7 @@
 #include <cstdlib> // std::rand & std::srand
 #include <ctime>   // std::time
 
-float brightness(glm::vec3 &color)
+float brightness(glm::vec3 const&color) // TRES IMPORTANT Quand on passe par & sans const, ça indique qu'on souhaite modifier la variable d'origine. Si ce n'est pas le cas, il faut utiliser const&, ou rien du tout (aka passage par copie). Pour les petits objets (int, float, double, bool, etc.) on préférera la copie, et pour les gros objets (std::vector, std::string, etc.) la const&
 {
     return color.r + color.b + color.g;
 }

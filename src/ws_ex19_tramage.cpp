@@ -28,8 +28,13 @@ int main()
 
                 if (nuance_gris < 0.1 && nuance_gris > 0.0) //si le nuance de gris est de 0.1 alors il va y aoir plus de chance que le pixel noir ou blanc soit noir => on lui donne presque 90% de chance
                 {
-                    std::vector<float> probabilite{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0}; //environ 9% de chance que le pixel soit blanc si ca nuance de gris était proche du noir
-                    image.pixel(x, y) = glm::vec3{probabilite[index]};
+                    // Autre manière d'obtenir blanc avec 9% de chance:
+                    // Cette méthode a l'avantage de pouvoir choisir n'importe quelle probabilité facilement, sans avoir à faire des tableaux "probabilite" à rallonge ^^
+                    bool const should_be_white{random_float(0.f, 100.f) < 9};
+                    if(should_be_white)
+                        image.pixel(x, y) = glm::vec3{1.f};
+                    else
+                        image.pixel(x, y) = glm::vec3{0.f};
                 }
                 if (nuance_gris < 0.2 && nuance_gris >= 0.1)
                 {

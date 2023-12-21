@@ -4,7 +4,7 @@
 #include <math.h>
 #include <vector>
 
-glm::vec3 color(std::vector<glm::vec3> &vector)
+glm::vec3 color(std::vector<glm::vec3> &vector) // Le nom de la fonction n'est pas clair: en voyant juste "color" je ne sait pas ce que la fonction fait. L'appeler average_color aurait été mieux.
 {
 
     vector[5].r = (vector[0].r + vector[2].r + vector[3].r + vector[4].r + vector[5].r + vector[6].r + vector[7].r + vector[8].r + vector[1].r) / 9;
